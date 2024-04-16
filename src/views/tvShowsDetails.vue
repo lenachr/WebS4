@@ -1,22 +1,22 @@
 <script setup>
-import { mounted, showDetails, apiUrls, images } from './bidule.js';
+import { upload, showDetails2, images } from './Data.js';
 
-// mounted()
+upload();
 </script>
 
 <template>
         <!-- Affichage du nom et de la description de chaque série --> 
-      <div v-if="showDetails[ $route.params.id ]">
+      <div v-if="showDetails2[ $route.params.id ]">
         <div class="box"> 
             <div class="poster"> <img :src="images[$route.params.id].src"> </div>
-            <div class="text"> <h2> {{ showDetails[$route.params.id].name }}</h2> 
-                <p> <h3> Show Description : </h3> {{ showDetails[$route.params.id].description }}
+            <div class="text"> <h2> {{ showDetails2[$route.params.id].name }}</h2> 
+                <p> <h3> Show Description : </h3> {{ showDetails2[$route.params.id].description }}
                 <br>
-                <h3>Genres :</h3> {{ showDetails[$route.params.id].genres }}
+                <h3>Genres :</h3> {{ showDetails2[$route.params.id].genres }}
                 <br>
-                <h3>Airing Debut :</h3> {{ showDetails[$route.params.id].start_date }}
+                <h3>Airing Debut :</h3> {{ showDetails2[$route.params.id].start_date }}
                 <br>
-                <h3>Airing Network :</h3> {{ showDetails[$route.params.id].network }}</p>
+                <h3>Airing Network :</h3> {{ showDetails2[$route.params.id].network }}</p>
             </div>
         </div>
         </div>
@@ -28,38 +28,11 @@ import { mounted, showDetails, apiUrls, images } from './bidule.js';
 export default {
     data(){
         return{
-            showDetailsData : null,
-            // showDetails : [],
+            // showDetailsData : null,
+            showDetails2 : [],
         };
     },
-
-    // mounted(){
-    //     // titi()
-    //     mounted()
-    //     // const response = await fetch(`https://www.episodate.com/api/show-details?q=${route.params.id}`); // récupère les données de l'url donnée
-    //     // const responseData = await response.json(); // transforme les données en format json
-
-    //     // if (responseData && responseData.tvShow) { // vérifie si la réponse contient des données et si la série existe
-    //     //   this.showDetails.push(responseData.tvShow); // met dans le tableau les données
-    //     // }
-    //     // console.log("données récupérées");
-    //     // console.log(responseData.tvShow.name);
-    // },
-
-    // mounted(){
-    //     const storedDetails = localStorage.getItem('showDetailsData');
-    //     if (storedDetails) {
-    //       this.showDetailsData = JSON.parse(storedDetails);
-    //       console.log(showDetailsData);
-    //     }
-    //     else {
-    //     // Si les données ne sont pas déjà enregistrées localement, récupérez-les depuis les APIs
-    //     fetch(apiUrls).then(() => {
-    //     // Une fois les données récupérées, mettez à jour votre composant avec les nouvelles données
-    //     this.showDetailsData = JSON.parse(localStorage.getItem('showDetailsData'));
-    //     });
-    //     }
-    // }   
+ 
 };
 
 
@@ -90,6 +63,7 @@ h3{
     display:block;                /* Transformation en block */
     /* min-width: 850px; */
     text-align: justify;
+    /* padding-bottom: 20px; */
 }
 
 @media (max-width: 600px) {
@@ -98,6 +72,7 @@ h3{
         display:grid;
         margin-top: -20px;
         margin-bottom: -60px;
+        margin-left: -10px;
     }
 
     .poster{
@@ -107,4 +82,27 @@ h3{
     }
 
 }
-</style>
+
+@media (min-width: 601px) and (max-width: 1023px) {
+
+    .box{
+        width: 90%;
+    }
+    /* .text{
+        width: 90%;
+    }*/
+}
+
+@media (min-width: 1024px) and (max-width: 1250px) {
+
+.box{
+    width: 180%;
+}
+
+
+/* .text{
+    width: 90%;
+} */
+}
+
+</style>./Data.js

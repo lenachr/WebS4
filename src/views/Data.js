@@ -1,4 +1,5 @@
 const showDetails = [];
+let showDetails2 = [];
 
 // TABLEAU D'IMAGES + TITRES + GENRES
 let images = [
@@ -48,10 +49,17 @@ async function mounted() {
             console.error(`Show details not found for link: ${URL}`);
           }
         }
-        // localStorage.setItem('showDetailsData', JSON.stringify(showDetails));
+        localStorage.setItem('showDetailsData', JSON.stringify(showDetails));
         } catch (error) {
             console.error(error);
         }
 };
 
-export { mounted, showDetails, images, apiUrls }
+function upload(){
+  const storedDetails = localStorage.getItem('showDetailsData');
+        if (storedDetails) {
+          showDetails2 = JSON.parse(storedDetails);
+        }
+}
+
+export { mounted, upload, showDetails2, images, apiUrls }

@@ -1,13 +1,12 @@
 <script setup>
-import { mounted, showDetails } from './bidule.js';
+import { mounted } from './Data.js';
 
 mounted()
 </script>
 
 <template>
-    
     <div class="bloc">
-      <div class="intro-text">Welcome to my website ! You can find on my page tv shows that I watched with the summary and some details about them. You can search a TV show and filter by category.</div>
+      <div class="intro-text">Welcome to my website ! You can find on my page tv shows that I watched with the summary and some details about them. You can click on a picture or filter by category.</div>
       <br>
       <div class="filtre">
         <label for="categoryFilter">Filter by Category : </label>
@@ -16,7 +15,7 @@ mounted()
           <option v-for="category in categories" :key="category" :value="category">{{ category }}</option>
         </select>
       <br>
-        <input type="text" v-model="search" placeholder="Look for a tv show">
+        <!-- <input type="text" v-model="search" placeholder="Look for a tv show"> -->
         <!-- <button @click="toggleImage">Search</button> -->
       </div>
       <!-- <img v-if="foundImage" :src="foundImage.src" :alt="foundImage.title"> -->
@@ -39,7 +38,7 @@ mounted()
 
 <script>
 import { RouterLink } from 'vue-router';
-import { images } from './bidule.js';
+import { images } from './Data.js';
 
 export default {
     data(){
@@ -91,12 +90,6 @@ export default {
         //   image.caption.toLowerCase().includes(searchTerm));
       }
     },
-
-    methods: {
-      toggleImage() {
-        this.filteredImages = !this.filteredImages; // Toggle the visibility of the image
-      }
-    }
     
 };
 </script>
@@ -104,12 +97,14 @@ export default {
 <style>
 
 .bloc{
-  width: 1000px;
+  /* width: 1000px; */
   /* align-items: center; */
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  
 }
 
 .intro-text{
+  /* width: 1100px; */
   padding-top: 125px;
   /* padding-left: 10px; */
   align-items: center;
@@ -129,8 +124,10 @@ export default {
 }
 
 .filtre {
-  scale: 110%;
+  /* width: 1100px; */
+  /* scale: 120%; */
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 17px;
   /* padding-bottom: 2px; */
   text-align: center;
   align-items: center;
@@ -181,17 +178,49 @@ img {
   width: 250px;
 }
 
-/* .title:hover {
-  opacity: 1;
-} */
-
 /* RESPONSIVE */
 
-@media (max-width: 600px) {
-
+@media (min-width: 200px) and (max-width: 500px) {
   .intro-text{
-    font-size: 22px;
+    /* font-size: 22px; */
     text-align: justify;
+    /* width: 100px; */
+    /* margin-left: 10%; */
+  }
+
+  .gallery{
+    /* margin-right: 100px; */
+    /* width: 80%; */
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .router-link{
+  width: 190px;
+}
+
+}
+
+@media (min-width: 500px) and (max-width: 600px) {
+
+  .box{
+    /* width: 120%; */
+    margin-left: 10%;
+  }
+  
+  .intro-text{
+    /* /* font-size: 22px; */
+    text-align: justify;
+    width: 450px;
+  }
+
+  .filtre{
+    /* margin-left: 5%; */
+  }
+
+  .gallery{
+    /* margin-right: 100px; */
+    /* width: 80%; */
+    grid-template-columns: repeat(2, 1fr);
   }
 
   img{
@@ -201,15 +230,17 @@ img {
 
 }
 
-@media (max-width: 900px) {
+@media (min-width: 601px) and (max-width: 900px) {
 
   .intro-text{
     font-size: 22px;
     text-align: justify;
+    width: 500px;
   }
 
   .bloc{
     width: 95%;
+    margin-left: 8%;
   }
 
   .gallery{
@@ -218,33 +249,39 @@ img {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .title{
-    /* width: 73%; */
-    /* height: 90%; */
-    /* font-size: 80%; */
-  }
-
-  .image{
+  /* .image{
     width: 190px;
-  }
+  } */
 
-  img{
+  /* img{
     width : 190px;
     height : 260px;
     /* width: 90%; */
-    /* height: 90%; */
-  }
+    /* height: 90%; 
+  } */
 
 }
 
-@media (min-width: 900px) and (max-width: 1000px) {
+@media (min-width: 900px) and (max-width: 1064px) {
 
   .bloc{
-    width: 90%;
+    /* width: 90%; */
+    margin-left: 15%;
   }
+
+  .intro-text{
+    width: 800px;
+  }
+
+  /* .box{
+    /* width: 1000px; */
+    /* margin-left: 10%; 
+  } */
+
   .gallery{
     /* margin-right: 100px; */
     /* width: 20%; */
+    /* width: 90%; */
     grid-template-columns: repeat(3, 1fr);
   }
 
@@ -256,19 +293,43 @@ img {
   }
 }
 
-@media (min-width: 1200px){
+@media (min-width: 1064px) and (max-width: 1219px) {
+
   .bloc{
-    align-items: center;
+    /* width: 98%; */
+    margin-left: 14%;
+  }
+
+  .intro-text{
+    width: 900px;
+  }
+  
+  .image{
+    width: 216px;
+  }
+
+  img{
+    width : 210px;
+    height : 280px;
+  }
+
+  .router-link{
+    width: 220px;
+  }
+}
+
+@media (min-width: 1220px){
+  .bloc{
+    margin-left: 6%;
+  }
+
+  .filtre{
+    scale: 110%;
   }
 
   .gallery{
-    width: 115%;
+    width: 108%;
   }
-
-  /* .title{
-    width: 95%;
-    height: 95%;
-  } */
 }
 
-</style>
+</style>./Data.js./Data.js

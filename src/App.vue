@@ -1,28 +1,9 @@
 <!-- App.vue -->
 <template>
-  <div id="app">
     <router-view></router-view>
-  </div>
 </template>
 
 <script>
-//   // async mounted() {
-//   //   try {
-//   //     for (const URL of this.apiUrls) {
-//   //       const response = await fetch(URL); // récupère les données de l'url donnée
-//   //       const responseData = await response.json(); // transforme les données en format json
-
-//   //       if (responseData && responseData.tvShow) { // vérifie si la réponse contient des données et si la série existe
-//   //         this.showDetails.push(responseData.tvShow); // met dans le tableau les données
-//   //       } else {
-//   //         this.showDetails.push(null); // si aucune donnée n'est présente, on ajoute un élément null à la fin du tableau
-//   //         console.error(`Show details not found for link: ${URL}`);
-//   //       }
-//   //   } catch (error) {
-//   //     console.error(error);
-//   //   }
-//   // },
-// };
 </script>
 
 <style>
@@ -40,7 +21,8 @@
 }
 
 .menu a {
-    display:block;                /* Transformation en block */
+    font-weight: 600;
+    display:block;               /* Transformation en block */
     min-width: 100px;             /* Largeur minimale des liens */
     color: rgb(11, 8, 41);
 }
@@ -55,9 +37,6 @@ a{
   color: rgb(11, 8, 41);
 }
 
-/* img:hover {
-  opacity: 0.3;
-} */
 
 h1{
   text-align: center;
@@ -71,7 +50,8 @@ header{
   position: fixed;
   top:0;
   width:100%;
-  display:inline-block;
+  display: flex;
+  justify-content: center;
   vertical-align:top;
   font-size:13px;
   color: rgb(12, 14, 39);
@@ -83,8 +63,11 @@ header{
 .banniere{
   width: auto;
   height : 80px;
-  margin-left: 39%;
-  margin-bottom: -6px;
+  margin-top: 30px;
+  margin-left: -250px;
+  /* margin-left: 5%; */
+  /* margin: auto; */
+  /* margin-bottom: -6px; */
 }
 
 footer{
@@ -104,7 +87,7 @@ body{
   min-height: 100vh; 
   background-repeat: no-repeat;
   background-size: cover; /* Ajuste l'image pour couvrir l'élément entier */
-  /* background-position: center; */
+  background-position: center;
 }
 
 /* responsive */
@@ -147,28 +130,23 @@ body{
   }
 
   .banniere{
-    margin-left: 20%;
+    /* margin-left: 20%; */
+    margin: auto;
   }
 
 }
 
 @media (min-width: 768px) {
 
-  body{
-    background-size: cover;
-  }
   
 }
 
-@media (min-width: 992px) {
+@media (min-width: 992px) and (max-width: 1200px) {
 
 }
 
 @media (min-width: 1200px) {
 
-  body{
-    background-size: cover;
-  }
   
 }
 
