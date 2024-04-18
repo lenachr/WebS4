@@ -1,3 +1,4 @@
+// TABLEAU POUR STOCKER LES DONNEES
 const showDetails = [];
 let showDetails2 = [];
 
@@ -55,6 +56,7 @@ async function mounted() {
         }
 };
 
+// FONCTION QUI RECUPERE LES DONNEES LOCALES STOCKEES
 function upload(){
   const storedDetails = localStorage.getItem('showDetailsData');
         if (storedDetails) {

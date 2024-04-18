@@ -1,14 +1,15 @@
+<!-- tvShowsDetails.vue -->
 <script setup>
 import { upload, showDetails2, images } from './Data.js';
 
-upload();
+upload(); // pour que les données chargent automatiquement sur les pages
 </script>
 
 <template>
-        <!-- Affichage du nom et de la description de chaque série --> 
-      <div v-if="showDetails2[ $route.params.id ]">
+    <!-- AFFICHAGE POUR CHAQUE SERIE --> 
+      <div v-if="showDetails2[$route.params.id]">
         <div class="box"> 
-            <div class="poster"> <img :src="images[$route.params.id].src"> </div>
+            <div class="poster"> <img :src="images[$route.params.id].src"> </div> 
             <div class="text"> <h2> {{ showDetails2[$route.params.id].name }}</h2> 
                 <p> <h3> Show Description : </h3> {{ showDetails2[$route.params.id].description }}
                 <br>
@@ -19,24 +20,10 @@ upload();
                 <h3>Airing Network :</h3> {{ showDetails2[$route.params.id].network }}</p>
             </div>
         </div>
-        </div>
+    </div>
 </template>
 
-<script>
-// import { titi } from './bidule.js'
-
-export default {
-    data(){
-        return{
-            // showDetailsData : null,
-            showDetails2 : [],
-        };
-    },
- 
-};
-
-
-</script>
+<script></script>
 
 <style>
 
@@ -60,11 +47,11 @@ h3{
 
 .text{
     transform: translateX(40px);
-    display:block;                /* Transformation en block */
-    /* min-width: 850px; */
+    display:block;                
     text-align: justify;
-    /* padding-bottom: 20px; */
 }
+
+/* RESPONSIVE */
 
 @media (max-width: 600px) {
     .box{
@@ -77,8 +64,6 @@ h3{
 
     .poster{
         margin-left: 40px;
-        /* width : 110px;
-        height : 160px; */
     }
 
 }
@@ -88,21 +73,14 @@ h3{
     .box{
         width: 90%;
     }
-    /* .text{
-        width: 90%;
-    }*/
 }
 
 @media (min-width: 1024px) and (max-width: 1250px) {
 
-.box{
-    width: 180%;
-}
+    .box{
+        width: 180%;
+    }
 
-
-/* .text{
-    width: 90%;
-} */
 }
 
 </style>./Data.js

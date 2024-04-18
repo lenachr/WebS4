@@ -1,3 +1,4 @@
+<!-- Home.vue -->
 <script setup>
 import { mounted } from './Data.js';
 
@@ -15,10 +16,7 @@ mounted()
           <option v-for="category in categories" :key="category" :value="category">{{ category }}</option>
         </select>
       <br>
-        <!-- <input type="text" v-model="search" placeholder="Look for a tv show"> -->
-        <!-- <button @click="toggleImage">Search</button> -->
       </div>
-      <!-- <img v-if="foundImage" :src="foundImage.src" :alt="foundImage.title"> -->
       <br>
       <div v-if="filterImages" >
         <div class="gallery"> 
@@ -45,34 +43,13 @@ export default {
         return{
       selectedCategory: "", // Catégorie sélectionnée par l'utilisateur
       categories: ["Comedy", "Drama", "Action", "Cartoons", "Romance"],
-      filteredImages:[],
+      filteredImages:[], // Tableau de posters filtrés par catégorie
       search : '',
-      a : 1,
-      b : 1,
         };
     },
 
     computed: {
-
-      bidule(){
-        let tab = [1,2,3];
-        tab = tab.filter(nb => nb > this.a);
-        return tab;
-      }, 
-
-      filterAndSearchImages() {
-        const filteredByCategory = this.selectedCategory ?
-          this.images.filter(image => image.category.includes(this.selectedCategory)) :
-          this.images;
-
-        const searchTerm = this.search.toLowerCase();
-        const filteredBySearch = searchTerm ?
-          filteredByCategory.filter(image => image.caption.toLowerCase().includes(searchTerm)) :
-          filteredByCategory;
-
-        return filteredBySearch;
-      },
-
+      // FONCTION POUR FILTRER LES POSTERS DES SERIES PAR CATEGORIE
       filterImages() {
           console.log("Catégorie sélectionnée :", this.selectedCategory);
           if (this.selectedCategory) {
@@ -82,13 +59,6 @@ export default {
           }
           return this.filteredImages;
       },
-        
-      foundImage() {
-        const searchTerm = this.search.toLowerCase(); // Convertir le terme de recherche en minuscules
-        return this.images.find(image => image.caption.toLowerCase().includes(searchTerm)); // Recherche de l'image correspondante
-        // return this.filteredImages = this.images.filter((image) =>
-        //   image.caption.toLowerCase().includes(searchTerm));
-      }
     },
     
 };
@@ -96,23 +66,13 @@ export default {
 
 <style>
 
-.bloc{
-  /* width: 1000px; */
-  /* align-items: center; */
-  /* margin: 0 auto; */
-  
-}
-
 .intro-text{
-  /* width: 1100px; */
+  text-align: justify;
   padding-top: 125px;
-  /* padding-left: 10px; */
   align-items: center;
-  /* text-align: center; */
   padding-bottom: 10px;
   font-family: Verdana, Geneva, Tahoma, sans-serif ;
   font-size: 17px;
-  /* background-color: aliceblue; */
 }
 
 .gallery {
@@ -124,33 +84,25 @@ export default {
 }
 
 .filtre {
-  /* width: 1100px; */
-  /* scale: 120%; */
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 17px;
-  /* padding-bottom: 2px; */
   text-align: center;
   align-items: center;
   z-index: 2;
 }
 
 img {
-  /* display: inline-block; */
-  /* width : 110px;
-  height : 160px; */
   width: 236px;
   height : 326px;
 } 
 
 .image{
-  /* opacity: 1; */
   transition: 0.2s;
   color: rgba(227, 194, 253, 0.7);
   padding-bottom: 10px;
 }
 
 .image:hover {
-  /* opacity: 0.3; */
   transform: scale(1.1); /* Zoom sur l'image au survol */
   color: rgba(227, 194, 253, 0.7);
 }
@@ -158,8 +110,6 @@ img {
 .title{
   width: 97%;
   height: 100%;
-  /* top : 0;
-  left: 0; */
   background: rgba(227, 194, 253, 0.7);
   display: flex;
   justify-content: center;
@@ -169,9 +119,10 @@ img {
   font-family: Verdana, Geneva, Tahoma, sans-serif ;
   font-size: 15px;
   margin-top: -6px;
-  /* transform: translateY(-200px); */
-  /* opacity: 0; */
-  /* transition: 0.6s; */
+}
+
+.title:hover{
+  color: rgb(56, 165, 219);
 }
 
 .router-link{
@@ -180,46 +131,46 @@ img {
 
 /* RESPONSIVE */
 
-@media (min-width: 200px) and (max-width: 500px) {
+@media (min-width: 300px) and (max-width: 500px) {
   .intro-text{
-    /* font-size: 22px; */
-    text-align: justify;
-    /* width: 100px; */
-    /* margin-left: 10%; */
+    margin-top: -20%;
+    width: 95%;
   }
 
   .gallery{
-    /* margin-right: 100px; */
-    /* width: 80%; */
+    gap: 2px;
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .router-link{
-  width: 190px;
-}
+  img{
+    width : 130px;
+    height : 180px;
+  }
 
-}
-
-@media (min-width: 500px) and (max-width: 600px) {
-
-  .box{
-    /* width: 120%; */
-    margin-left: 10%;
+  .title{
+    font-size: small;
   }
   
-  .intro-text{
-    /* /* font-size: 22px; */
-    text-align: justify;
-    width: 450px;
+  .router-link{
+  width: 140px;
   }
 
-  .filtre{
-    /* margin-left: 5%; */
+}
+
+@media (min-width: 501px) and (max-width: 900px) {
+
+  .intro-text{
+    font-size: 22px;
+    width : 95%;
+  }
+
+  .bloc{
+    margin-left: 8%;
   }
 
   .gallery{
-    /* margin-right: 100px; */
-    /* width: 80%; */
+    width: 80%;
+    gap: 5px;
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -228,76 +179,45 @@ img {
     height: 280px;
   }
 
-}
-
-@media (min-width: 601px) and (max-width: 900px) {
-
-  .intro-text{
-    font-size: 22px;
-    text-align: justify;
-    width: 500px;
+  .router-link{
+    width: 212px;
   }
-
-  .bloc{
-    width: 95%;
-    margin-left: 8%;
-  }
-
-  .gallery{
-    /* margin-right: 100px; */
-    /* width: 80%; */
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* .image{
-    width: 190px;
-  } */
-
-  /* img{
-    width : 190px;
-    height : 260px;
-    /* width: 90%; */
-    /* height: 90%; 
-  } */
 
 }
 
-@media (min-width: 900px) and (max-width: 1064px) {
-
-  .bloc{
-    /* width: 90%; */
-    margin-left: 15%;
-  }
+@media (min-width: 900px) and (max-width: 1023px) {
 
   .intro-text{
-    width: 800px;
+    width: 90%;
   }
 
-  /* .box{
-    /* width: 1000px; */
-    /* margin-left: 10%; 
-  } */
-
   .gallery{
-    /* margin-right: 100px; */
-    /* width: 20%; */
-    /* width: 90%; */
+    gap : 8px;
     grid-template-columns: repeat(3, 1fr);
   }
 
   .title{
-    /* width: 74%; */
-    /* height: 95%; */
     font-size: medium;
     padding-left: 5px;
   }
 }
 
+@media (min-width: 1024px) and (max-width: 1064px) {
+
+  .gallery{
+    margin-right: 60px;
+    gap : 70px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}
+
+
 @media (min-width: 1064px) and (max-width: 1219px) {
 
   .bloc{
-    /* width: 98%; */
-    margin-left: 14%;
+    width: 98%;
+    margin-left: 5%;
   }
 
   .intro-text{
@@ -332,4 +252,4 @@ img {
   }
 }
 
-</style>./Data.js./Data.js
+</style>

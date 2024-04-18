@@ -9,7 +9,7 @@
 <style>
 
 .menu {
-    display: flex;              /* Transformation en flexbox*/
+    display: flex;              
     justify-content: left;     /* Alignements des liens dans le menu */
     padding-left: 10px;
     margin-bottom: -32px;
@@ -22,14 +22,14 @@
 
 .menu a {
     font-weight: 600;
-    display:block;               /* Transformation en block */
+    display:block;               
     min-width: 100px;             /* Largeur minimale des liens */
-    color: rgb(11, 8, 41);
+    color: rgb(0, 0, 0);
 }
 
 .menu a:hover {
-  background-color: #071c2c; 
-  color: white;
+  background-color: rgb(236, 215, 255); 
+  color: rgb(56, 165, 219);
 }
 */
 
@@ -65,9 +65,6 @@ header{
   height : 80px;
   margin-top: 30px;
   margin-left: -250px;
-  /* margin-left: 5%; */
-  /* margin: auto; */
-  /* margin-bottom: -6px; */
 }
 
 footer{
@@ -90,7 +87,7 @@ body{
   background-position: center;
 }
 
-/* responsive */
+/* RESPONSIVE */
 
 @media (max-width: 600px) {
 
@@ -114,7 +111,6 @@ body{
     background-color: rgb(236, 215, 255);
     width: 100%;
     text-align: center;
-    transition: 0.2s;
   }
 
   nav li {
@@ -122,7 +118,7 @@ body{
   }
 
   nav li:hover{
-    background-color: rgb(200, 147, 247);
+    background-color: rgb(236, 215, 255);
   }
 
   nav.active ul{
@@ -130,24 +126,14 @@ body{
   }
 
   .banniere{
-    /* margin-left: 20%; */
+    height: 62px;
     margin: auto;
   }
 
-}
+  h1{
+    font-size: 12px;
+  }
 
-@media (min-width: 768px) {
-
-  
-}
-
-@media (min-width: 992px) and (max-width: 1200px) {
-
-}
-
-@media (min-width: 1200px) {
-
-  
 }
 
 </style>
